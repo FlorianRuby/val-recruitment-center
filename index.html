@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT E-Sports Rekrutierungszentrum</title>
+    <style>
+        :root {
+            --primary-red: #ff4655;
+            --dark-bg: #0f1923;
+            --light-text: #f8f8f8;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        .header {
+            background: linear-gradient(rgba(15,25,35,0.9), rgba(15,25,35,0.9)),
+                        url('header-bg.jpg');
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(15,25,35,0.8);
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .info-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .rating {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .map-container {
+            height: 400px;
+            margin: 2rem 0;
+        }
+
+        .contact-bar {
+            background: var(--primary-red);
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
+        <div class="rating">★★★★☆ 4.7 (367 reviews)</div>
+    </header>
+
+    <section class="gallery">
+        <div class="gallery-item">
+            <img src="/assets/2.png" alt="Training Facility">
+            <div class="caption">
+                <h3>Pro Training Facilities</h3>
+                <p>State-of-the-art gaming stations with high-end equipment</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="/assets/3.png" alt="Tournament Hall">
+            <div class="caption">
+                <h3>Tournament Arena</h3>
+                <p>Main stage for competitive matches and scrims</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="/assets/1.png" alt="Team Photo">
+            <div class="caption">
+                <h3>Professional Coaching</h3>
+                <p>Learn from experienced VALORANT veterans</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2>Recruitment Center Details</h2>
+        <p>📍 Address: Zugerstrasse 7b, 8917 Oberlunkhofen</p>
+        <p>🕒 Open 24 hours</p>
+        <p>📞 +41 78 367 97 00</p>
+        
+        <div class="map-container">
+            <!-- Google Maps Embed Code -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d338.14195390239604!2d8.3899075!3d47.3116888!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900f006ab51817%3A0x9d1febdce9e2b228!2sVALORANT%20E-Sports%20Rekrutierungszentrum!5e0!3m2!1sen!2sch!4v1739718567654!5m2!1sen!2sch" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>Recruitment Process</h3>
+        <ol>
+            <li>Submit your competitive stats</li>
+            <li>Initial skill assessment</li>
+            <li>Team compatibility trial</li>
+            <li>Professional contract signing</li>
+        </ol>
+    </section>
+
+    <div class="contact-bar">
+        <h3>Ready to Join? Contact Us Now!</h3>
+        <p>Email: recruitment@valorant-esports.ch | Phone: +41 78 367 97 00</p>
+    </div>
+</body>
+</html>
