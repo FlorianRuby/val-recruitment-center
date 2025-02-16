@@ -79,6 +79,56 @@
             padding: 1rem;
             text-align: center;
         }
+
+        .testimonies-section {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+            border-radius: 8px;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .testimonies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .testimony {
+            background: rgba(15, 25, 35, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .testimony:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimony h3 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .testimony .stars {
+            color: var(--primary-red);
+            font-size: 0.9rem;
+        }
+
+        .testimony p {
+            font-style: italic;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -136,6 +186,55 @@
             <li>Team compatibility trial</li>
             <li>Professional contract signing</li>
         </ol>
+    </section>
+
+    <!-- Testimonies Section -->
+    <section class="testimonies-section">
+        <h2>What Our Players Say</h2>
+        <div class="testimonies-grid">
+            <div class="testimony">
+                <h3>
+                    Tenz
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"Joining this recruitment center was the best decision of my career. The coaching staff helped me refine my skills and take my gameplay to the next level. Highly recommended!"</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    Kamikaze
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"The facilities here are top-notch, and the team environment is incredible. I've grown so much as a player and as a teammate. Thank you for believing in me!"</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    195 WPM
+                    <span class="stars">★★★★☆</span>
+                </h3>
+                <p>"The training programs are intense but worth it. My aim and game sense have improved drastically. If you're serious about going pro, this is the place to be."</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    Pivex
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"The support and resources provided here are unmatched. I've never felt more prepared for competitive play. This center truly cares about its players."</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    NightOwl_27
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"The 24/7 access is a game-changer! As someone who performs best during late hours, I can practice whenever I'm most focused. The staff is always available and supportive, no matter the time."</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    SwissAim
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"What sets this center apart is their mental coaching program. They don't just focus on mechanical skills - they help you develop a champion's mindset. My tournament performance has improved dramatically!"</p>
+            </div>
+        </div>
     </section>
 
     <div class="contact-bar">
