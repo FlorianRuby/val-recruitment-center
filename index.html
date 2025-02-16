@@ -84,26 +84,26 @@
 <body>
     <header class="header">
         <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
-        <div class="rating">★★★★☆ 4.7 (367 reviews)</div>
+        <div class="rating">★★★★☆ <span id="reviewCount">4.7 (367 reviews)</span></div>
     </header>
 
     <section class="gallery">
         <div class="gallery-item">
-            <img src="/assets/2.png" alt="Training Facility">
+            <img src="assets/2.png" alt="Training Facility">
             <div class="caption">
                 <h3>Pro Training Facilities</h3>
                 <p>State-of-the-art gaming stations with high-end equipment</p>
             </div>
         </div>
         <div class="gallery-item">
-            <img src="/assets/3.png" alt="Tournament Hall">
+            <img src="assets/3.png" alt="Tournament Hall">
             <div class="caption">
                 <h3>Tournament Arena</h3>
                 <p>Main stage for competitive matches and scrims</p>
             </div>
         </div>
         <div class="gallery-item">
-            <img src="/assets/1.png" alt="Team Photo">
+            <img src="assets/1.png" alt="Team Photo">
             <div class="caption">
                 <h3>Professional Coaching</h3>
                 <p>Learn from experienced VALORANT veterans</p>
@@ -142,5 +142,19 @@
         <h3>Ready to Join? Contact Us Now!</h3>
         <p>Email: recruitment@valorant-esports.ch | Phone: +41 78 367 97 00</p>
     </div>
+
+    <script>
+        // JavaScript to increment reviews every second
+        let reviewCount = 367; // Initial number of reviews
+        const reviewElement = document.getElementById('reviewCount');
+
+        function updateReviews() {
+            reviewCount++; // Increment the review count
+            reviewElement.textContent = `4.7 (${reviewCount} reviews)`; // Update the text
+        }
+
+        // Update reviews every second (1000ms)
+        setInterval(updateReviews, 1000);
+    </script>
 </body>
 </html>
