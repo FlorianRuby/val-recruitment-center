@@ -3,741 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌀 VALORANT QUANTUM RECRUITMENT NEXUS 🧠</title>
+    <title>🌈 VALORANT QUANTUM  RECRUITMENT CENTER 🚀</title>
     <style>
         :root {
-            --neural-primary: #00ffff;
-            --neural-secondary: #ff00ff;
-            --background-dark: #000011;
-            --primary-red: #ff4655;
-            --dark-bg: #0f1923;
-            --light-text: #f8f8f8;
+            --glitch-red: #ff4655;
+            --cosmic-purple: #8a4fff;
+            ---rainbow: linear-gradient(45deg, 
+                #ff0000, #ff7f00, #ffff00, 
+                #00ff00, #0000ff, #4b0082, 
+                #9400d3);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @keyframes neural-pulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            10% { transform: scale(1.02) rotate(3deg); }
-            20% { transform: scale(0.98) rotate(-3deg); }
-            30% { transform: scale(1.05) rotate(6deg); }
-            40% { transform: scale(0.95) rotate(-6deg); }
-            50% { transform: scale(1.08) rotate(9deg); }
-            60% { transform: scale(0.92) rotate(-9deg); }
-            70% { transform: scale(1.1) rotate(12deg); }
-            80% { transform: scale(0.9) rotate(-12deg); }
-            90% { transform: scale(1.05) rotate(5deg); }
-        }
-
-        @keyframes sussy-wiggle {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(-5px) rotate(-2deg); }
-            75% { transform: translateX(5px) rotate(2deg); }
-        }
-
-        @keyframes quantum-glitch {
+        @keyframes glitch-anim {
             0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            10% { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%); }
-            20% { clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%); }
-            30% { clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%); }
-        }
-
-        @keyframes epic-hover {
-            0%, 100% { 
-                transform: scale(1) rotate(0deg);
-                box-shadow: 0 0 10px rgba(0,255,255,0.3);
-            }
-            50% { 
-                transform: scale(1.05) rotate(3deg);
-                box-shadow: 0 0 20px rgba(255,0,255,0.5);
-            }
-        }
-
-        @keyframes fly-buck {
-            0% { 
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0.7;
-            }
-            100% { 
-                transform: translate(100vw, 100vh) rotate(720deg);
-                opacity: 0;
-            }
+            5% { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%); }
+            10% { clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%); }
         }
 
         body {
-            font-family: 'Space Mono', 'Comic Sans MS', monospace;
-            background: var(--dark-bg);
-            color: var(--light-text);
-            position: relative;
+            font-family: 'Comic Sans MS', 'Papyrus', cursive;
+            background: var(---rainbow);
+            color: #ffffff;
+            margin: 0;
+            overflow-x: hidden;
+            perspective: 1000px;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewport="0 0 100 100" style="fill:black;font-size:24px;"><text y="50%">🦄</text></svg>'), auto;
         }
 
-        .neural-overlay {
-            position: fixed;
+        .universe-container {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: cosmic-spin 20s infinite linear;
+        }
+
+        @keyframes cosmic-spin {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            50% { transform: rotateY(180deg) rotateX(90deg); }
+            100% { transform: rotateY(360deg) rotateX(180deg); }
+        }
+
+        .glitch-header {
+            position: relative;
+            text-align: center;
+            background: rgba(15,25,35,0.9);
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .glitch-header::before,
+        .glitch-header::after {
+            content: attr(data-text);
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 9999;
         }
 
-        .data-stream {
-            position: absolute;
-            color: rgba(0,255,255,0.3);
-            font-size: 10px;
-            white-space: nowrap;
-            animation: data-stream linear infinite;
+        .glitch-header::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
         }
 
-        @keyframes data-stream {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100vh); }
-        }
-
-        .neural-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--neural-primary);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            mix-blend-mode: difference;
-        }
-
-        .flying-bucks {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        .flying-buck {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23green"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2 12l-4.5 4.5 1.5 1.5 6-6-6-6-1.5 1.5 4.5 4.5z"/></svg>');
-            background-size: contain;
-            animation: fly-buck 5s linear infinite;
-            opacity: 0.7;
+        .glitch-header::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
         }
 
         .gallery-item {
             transition: all 0.5s ease;
-            animation: sussy-wiggle 3s infinite;
+            transform: rotate(0deg) scale(1);
+            filter: brightness(0.8) contrast(1.2);
         }
 
         .gallery-item:hover {
-            animation: epic-hover 1s infinite;
+            transform: rotate(360deg) scale(1.1);
+            filter: brightness(1.2) contrast(1.5) hue-rotate(90deg);
         }
 
-        .header {
-            animation: quantum-glitch 5s infinite alternate;
-        }
-
-        .quantum-recruitment-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            display: none;
-            overflow-y: auto;
-        }
-
-        .recruitment-container {
-            max-width: 1000px;
-            margin: 50px auto;
-            background: rgba(0,0,0,0.8);
-            border: 2px solid var(--neural-primary);
-            padding: 30px;
-        }
-
-        .recruitment-form {
+        .testimonial-matrix {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            transform: skew(-5deg);
         }
 
-        .form-group {
+        .testimony {
+            background: rgba(69, 69, 69, 0.8);
+            border: 3px solid var(--cosmic-purple);
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            perspective: 1000px;
+        }
+
+        .testimony:hover {
+            transform: rotateY(180deg);
+            background: rgba(255, 70, 85, 0.9);
+        }
+
+        .easter-egg-zone {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
             display: flex;
             flex-direction: column;
         }
 
-        .form-input {
-            background: rgba(0,255,255,0.1);
-            border: 1px solid var(--neural-primary);
-            color: var(--neural-primary);
-            padding: 10px;
-            margin-top: 5px;
-        }
-
-        .submit-button {
-            background: var(--neural-primary);
-            color: black;
+        .secret-button {
+            background: var(--glitch-red);
+            color: white;
             border: none;
-            padding: 15px;
+            padding: 10px 20px;
+            margin: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            grid-column: span 2;
-            margin-top: 20px;
+            animation: pulse 2s infinite;
+            transform-style: preserve-3d;
         }
 
-        .submit-button:hover {
-            background: var(--neural-secondary);
-            transform: scale(1.05);
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
         }
 
-        .skill-matrix {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .skill-node {
-            background: rgba(0,255,255,0.1);
-            border: 1px solid var(--neural-primary);
-            padding: 10px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            animation: sussy-wiggle 2s infinite;
-        }
-
-        .skill-node:hover {
-            background: rgba(0,255,255,0.3);
-            transform: scale(1.1);
-        }
-
-        .skill-node.active {
-            background: rgba(255,0,255,0.5);
-            transform: scale(1.2);
-        }
-
-        .error-message {
-            color: red;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .valorant-dance {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 200px;
-            background: rgba(0,0,0,0.7);
-            border-radius: 50%;
-            display: none;
-            z-index: 10000;
-        }
-
-        .valorant-dance-character {
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4655"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 18c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"/></svg>');
-            background-size: 50%;
-            background-position: center;
-            background-repeat: no-repeat;
-            animation: valorant-sussy-dance 1s infinite alternate;
-        }
-
-        @keyframes valorant-sussy-dance {
-            0% { transform: rotate(-10deg) scale(0.9); }
-            100% { transform: rotate(10deg) scale(1.1); }
-        }
-
-        .quantum-contact-animation {
+        .matrix-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 10001;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .quantum-contact-animation .loading-bar {
-            width: 0%;
-            height: 10px;
-            background: linear-gradient(to right, #00ffff, #ff00ff);
-            margin-top: 20px;
-            transition: width 3s ease-in-out;
-        }
-
-        .quantum-contact-result {
-            color: var(--neural-primary);
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .close-quantum-layer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--neural-primary);
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        /* Rest of the original site styles remain the same */
-        .header {
-            background: linear-gradient(rgba(15,25,35,0.9), rgba(15,25,35,0.9)),
-                        url('header-bg.jpg');
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .caption {
-            position: absolute;
-            bottom: 0;
-            background: rgba(15,25,35,0.8);
-            width: 100%;
-            padding: 1rem;
-        }
-
-        .quantum-recruitment-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--neural-primary);
-            color: black;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            z-index: 100;
-            animation: 
-                pulse 2s infinite,
-                sussy-wiggle 3s infinite;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
         }
     </style>
 </head>
 <body>
-    <!-- Flying Bucks Container -->
-    <div class="flying-bucks" id="flyingBucksContainer"></div>
+    <canvas class="matrix-background" id="matrixCanvas"></canvas>
 
-    <!-- Valorant Dance Container -->
-    <div class="valorant-dance" id="valorantDance">
-        <div class="valorant-dance-character"></div>
-    </div>
-
-    <!-- Quantum Contact Animation -->
-    <div class="quantum-contact-animation" id="quantumContactAnimation">
-        <button class="close-quantum-layer" onclick="closeQuantumContact()">CLOSE QUANTUM PORTAL</button>
-        <div class="quantum-contact-result" id="quantumContactResult">
-            INITIATING QUANTUM COMMUNICATION...
-        </div>
-        <div class="loading-bar" id="quantumContactLoadingBar"></div>
-    </div>
-
-    <div class="neural-cursor" id="neuralCursor"></div>
-    <div class="neural-overlay" id="dataVisualization"></div>
-
-    <!-- Quantum Recruitment Layer -->
-    <div class="quantum-recruitment-layer" id="quantumRecruitmentLayer">
-        <div class="recruitment-container">
-            <h2 style="color: var(--neural-primary); text-align: center; margin-bottom: 20px;">
-                QUANTUM RECRUITMENT PROTOCOL
-            </h2>
-            
-            <div class="skill-matrix">
-                <div class="skill-node" data-skill="aim">AIM</div>
-                <div class="skill-node" data-skill="strategy">STRATEGY</div>
-                <div class="skill-node" data-skill="reflexes">REFLEXES</div>
-                <div class="skill-node" data-skill="positioning">POSITIONING</div>
-                <div class="skill-node" data-skill="communication">COMMUNICATION</div>
-                <div class="skill-node" data-skill="adaptability">ADAPTABILITY</div>
+    <div class="universe-container">
+        <header class="glitch-header" data-text="VALORANT QUANTUM  RECRUITMENT CENTER">
+            <h1>VALORANT QUANTUM RECRUITMENT CENTER</h1>
+            <div class="rating">
+                4.20 (1337 reviews)
             </div>
+        </header>
 
-            <form class="recruitment-form" id="recruitmentForm">
-                <div class="form-group">
-                    <label>VALORANT RANK</label>
-                    <select class="form-input" name="rank" required>
-                        <option value="">QUANTUM RANKING</option>
-                        <option value="iron">IRON POTENTIAL</option>
-                        <option value="bronze">BRONZE CALIBRATION</option>
-                        <option value="silver">SILVER SYNCHRONIZATION</option>
-                        <option value="gold">GOLD CONVERGENCE</option>
-                        <option value="platinum">PLATINUM RESONANCE</option>
-                        <option value="diamond">DIAMOND SINGULARITY</option>
-                        <option value="immortal">IMMORTAL TRANSCENDENCE</option>
-                        <option value="radiant">RADIANT CONSCIOUSNESS</option>
-                    </select>
+        <section class="gallery">
+            <div class="gallery-item" onclick="alert('YOU CLICKED THE PORTAL OF DESTINY! 🌈')">
+                <img src="assets/2.png" alt="Quantum Training Facility">
+                <div class="caption">
+                    <h3>INTERDIMENSIONAL GAMER ZONE</h3>
                 </div>
-                <div class="form-group">
-                    <label>NEURAL CONTACT</label>
-                    <input type="email" class="form-input" name="email" required placeholder="QUANTUM COMMUNICATION CHANNEL">
-                </div>
-                <div id="errorMessage" class="error-message"></div>
-                <button type="submit" class="submit-button">INITIATE QUANTUM RECRUITMENT</button>
-            </form>
-
-            <div id="resultDisplay" class="result-display" style="display:none;">
-                <div id="resultContent"></div>
             </div>
-        </div>
+            <div class="gallery-item">
+                <img src="assets/3.png" alt="Multiverse Tournament Hall">
+                <div class="caption">
+                    <h3>REALITY-BENDING ARENA</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/1.png" alt="Cosmic Team Photo">
+                <div class="caption">
+                    <h3>TENZ COACHING PORTAL</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial-matrix">
+            <div class="testimony">
+                <h3>TenZ</h3>
+                <p>"Went from zero to hero in QUANTUM NANOSECONDS!"</p>
+            </div>
+            <div class="testimony">
+                <h3>Kamikaze 🤯</h3>
+                <p>"My aim transcends physical reality! MATRIX ACTIVATED! 💥"</p>
+            </div>
+            <div class="testimony">
+                <h3>195 WPM 💨</h3>
+                <p>"Typing speed = LIGHT SPEED COMPUTATION! 🖥️"</p>
+            </div>
+        </section>
     </div>
 
-    <!-- Quantum Recruitment Button -->
-    <button class="quantum-recruitment-btn" onclick="openQuantumRecruitment()">
-        QUANTUM RECRUITMENT
-    </button>
-
-    <!-- Original Site Content -->
-    <header class="header">
-        <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
-        <div class="rating">★★★★☆ <span id="reviewCount">4.7 (367 reviews)</span></div>
-    </header>
-
-    <section class="gallery">
-        <div class="gallery-item">
-            <img src="assets/2.png" alt="Training Facility">
-            <div class="caption">
-                <h3>Pro Training Facilities</h3>
-                <p>State-of-the-art gaming stations with high-end equipment</p>
-            </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/3.png" alt="Tournament Hall">
-            <div class="caption">
-                <h3>Tournament Arena</h3>
-                <p>Main stage for competitive matches and scrims</p>
-            </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/1.png" alt="Team Photo">
-            <div class="caption">
-                <h3>Professional Coaching</h3>
-                <p>Learn from experienced VALORANT veterans</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="info-section">
-        <h2>Recruitment Center Details</h2>
-        <p>📍 Address: Zugerstrasse 7b, 8917 Oberlunkhofen</p>
-        <p>🕒 Open 24 hours</p>
-        <p>📞 +41 78 367 97 00</p>
-        
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d338.14195390239604!2d8.3899075!3d47.3116888!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900f006ab51817%3A0x9d1febdce9e2b228!2sVALORANT%20E-Sports%20Rekrutierungszentrum!5e0!3m2!1sen!2sch!4v1739718567654!5m2!1sen!2sch" 
-                    width="100%" 
-                    height="400" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-
-        <h3>Recruitment Process</h3>
-        <ol>
-            <li>Submit your competitive stats</li>
-            <li>Initial skill assessment</li>
-            <li>Team compatibility trial</li>
-            <li>Professional contract signing</li>
-        </ol>
-    </section>
-
-    <section class="testimonies-section">
-        <h2>What Our Players Say</h2>
-        <div class="testimonies-grid">
-            <div class="testimony">
-                <h3>
-                    Tenz
-                    <span class="stars">★★★★★</span>
-                </h3>
-                <p>"Joining this recruitment center was the best decision of my career. The coaching staff helped me refine my skills and take my gameplay to the next level. Highly recommended!"</p>
-            </div>
-            <div class="testimony">
-                <h3>
-                    Kamikaze
-                    <span class="stars">★★★★★</span>
-                </h3>
-                <p>"The facilities here are top-notch, and the team environment is incredible. I've grown so much as a player and as a teammate. Thank you for believing in me!"</p>
-            </div>
-            <div class="testimony">
-                <h3>
-                    195 WPM
-                    <span class="stars">★★★★☆</span>
-                </h3>
-                <p>"The training programs are intense but worth it. My aim and game sense have improved drastically. If you're serious about going pro, this is the place to be."</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="contact-bar">
-        <h3>Ready to Join? Contact Us Now!</h3>
-        <p>Email: recruitment@valorant-esports.ch | Phone: +41 78 367 97 00</p>
+    <div class="easter-egg-zone">
+        <button class="secret-button" onclick="alert('🌈 CONGRATULATIONS! YOU\'VE UNLOCKED THE COSMIC GAMER ACHIEVEMENT! 🚀')">
+            PRESS FOR QUANTUM POWER!
+        </button>
+        <button class="secret-button" onclick="alert('YOU ARE NOW THE CHOSEN ONE OF THE  UNIVERSE! 👽')">
+            ACTIVATE  SINGULARITY!
+        </button>
     </div>
 
     <script>
-        // Neural Cursor
-        const neuralCursor = document.getElementById('neuralCursor');
-        document.addEventListener('mousemove', (e) => {
-            neuralCursor.style.left = `${e.clientX}px`;
-            neuralCursor.style.top = `${e.clientY}px`;
-        });
+        // MATRIX BACKGROUND MAGIC
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        // Data Stream Visualization
-        const dataVisualization = document.getElementById('dataVisualization');
-        const dataChars = 'VALORANT0123456789$%#@!*GAMER'.split('');
+        const chars = 'VALORANT0123456789$%#@!*GAMER'.split('');
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
 
-        function createDataStream() {
-            const stream = document.createElement('div');
-            stream.classList.add('data-stream');
-            
-            stream.style.left = `${Math.random() * 100}%`;
-            stream.style.animationDuration = `${5 + Math.random() * 10}s`;
-            
-            const length = 50 + Math.floor(Math.random() * 100);
-            stream.textContent = Array.from({length}, 
-                () => dataChars[Math.floor(Math.random() * dataChars.length)]
-            ).join('');
-            
-            dataVisualization.appendChild(stream);
-            
-            stream.addEventListener('animationend', () => {
-                stream.remove();
-            });
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
         }
 
-        function initDataStreams() {
-            for (let i = 0; i < 20; i++) {
-                createDataStream();
-            }
-        }
-
-        initDataStreams();
-        setInterval(initDataStreams, 5000);
-
-        // Quantum Recruitment Layer
-        const quantumRecruitmentLayer = document.getElementById('quantumRecruitmentLayer');
-        const recruitmentForm = document.getElementById('recruitmentForm');
-        const errorMessage = document.getElementById('errorMessage');
-        const resultDisplay = document.getElementById('resultDisplay');
-        const resultContent = document.getElementById('resultContent');
-
-        function openQuantumRecruitment() {
-            quantumRecruitmentLayer.style.display = 'block';
-        }
-
-        // Skill Node Interactions
-        const skillNodes = document.querySelectorAll('.skill-node');
-        const activeSkills = new Set();
-
-        skillNodes.forEach(node => {
-            node.addEventListener('click', () => {
-                const skill = node.getAttribute('data-skill');
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = `${fontSize}px monospace`;
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 
-                if (activeSkills.has(skill)) {
-                    activeSkills.delete(skill);
-                    node.classList.remove('active');
-                } else {
-                    activeSkills.add(skill);
-                    node.classList.add('active');
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
                 }
-            });
-        });
-
-        // Flying Bucks Generator
-        function generateFlyingBucks() {
-            const bucksContainer = document.getElementById('flyingBucksContainer');
-            const buckCount = Math.floor(Math.random() * 5) + 3; // 3-7 bucks
-
-            for (let i = 0; i < buckCount; i++) {
-                const buck = document.createElement('div');
-                buck.classList.add('flying-buck');
-                
-                // Random starting position
-                buck.style.left = `${Math.random() * window.innerWidth}px`;
-                buck.style.top = `${Math.random() * window.innerHeight}px`;
-                
-                // Random fly duration and delay
-                buck.style.animationDuration = `${5 + Math.random() * 5}s`;
-                buck.style.animationDelay = `${Math.random() * 3}s`;
-
-                bucksContainer.appendChild(buck);
-
-                // Remove buck after animation
-                buck.addEventListener('animationend', () => {
-                    buck.remove();
-                });
+                drops[i]++;
             }
         }
 
-        // Start generating bucks periodically
-        setInterval(generateFlyingBucks, 10000);
-
-        // Valorant Dance Trigger
-        function startValorantDance() {
-            const valorantDance = document.getElementById('valorantDance');
-            valorantDance.style.display = 'block';
-            
-            setTimeout(() => {
-                valorantDance.style.display = 'none';
-            }, 5000);
+        function animateMatrix() {
+            drawMatrix();
+            requestAnimationFrame(animateMatrix);
         }
 
-        // Quantum Contact Animation
-        function initiateQuantumContact() {
-            const quantumContactAnimation = document.getElementById('quantumContactAnimation');
-            const loadingBar = document.getElementById('quantumContactLoadingBar');
-            const contactResult = document.getElementById('quantumContactResult');
+        animateMatrix();
 
-            quantumContactAnimation.style.display = 'flex';
-            
-            // Simulate quantum connection
-            setTimeout(() => {
-                loadingBar.style.width = '100%';
-            }, 100);
-
-            // Update result messages
-            const messages = [
-                'CONNECTING TO MILAN QUANTUM NETWORK...',
-                'ESTABLISHING SUSSY BAKA PROTOCOL...',
-                'QUANTUM COMMUNICATION SUCCESSFUL! 🚀',
-                'MILAN RECEPTIVITY: 69% 😏',
-                'SKIBIDI RIZZ CONFIRMED! 💥'
-            ];
-
-            let messageIndex = 0;
-            const messageInterval = setInterval(() => {
-                if (messageIndex < messages.length) {
-                    contactResult.textContent = messages[messageIndex];
-                    messageIndex++;
-                } else {
-                    clearInterval(messageInterval);
-                }
-            }, 1500);
-        }
-
-        function closeQuantumContact() {
-            const quantumContactAnimation = document.getElementById('quantumContactAnimation');
-            quantumContactAnimation.style.display = 'none';
-        }
-
-        // Close Quantum Recruitment Layer
-        function closeQuantumRecruitment() {
-            const quantumRecruitmentLayer = document.getElementById('quantumRecruitmentLayer');
-            quantumRecruitmentLayer.style.display = 'none';
-        }
-
-        // Form Submission
-        recruitmentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            errorMessage.textContent = '';
-
-            // Validate form
-            const formInputs = recruitmentForm.querySelectorAll('input, select');
-            let isValid = true;
-
-            formInputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                }
-            });
-
-            // Check skills
-            if (activeSkills.size === 0) {
-                isValid = false;
-                errorMessage.textContent = 'PLEASE SELECT AT LEAST ONE QUANTUM SKILL!';
-            }
-
-            if (!isValid) {
-                if (!errorMessage.textContent) {
-                    errorMessage.textContent = 'COMPLETE ALL NEURAL INTERFACE PARAMETERS!';
-                }
-                return;
-            }
-
-            // Collect form data
-            const formData = new FormData(recruitmentForm);
-            const formObject = Object.fromEntries(formData.entries());
-
-            // Add selected skills
-            formObject.skills = Array.from(activeSkills);
-
-            // Generate quantum recruitment analysis
-            const resultHTML = `
-                <p>🧠 NEURAL PROFILE ANALYSIS 🌀</p>
-                <hr>
-                <p><strong>NAME:</strong> ${formObject.name}</p>
-                <p><strong>PLATFORM:</strong> ${formObject.platform.toUpperCase()}</p>
-                <p><strong>RANK:</strong> ${formObject.rank.toUpperCase()}</p>
-                <p><strong>CONTACT:</strong> ${formObject.email}</p>
-                <p><strong>QUANTUM SKILLS:</strong> ${formObject.skills.join(', ').toUpperCase()}</p>
-                <hr>
-                <p>🚀 RECRUITMENT STATUS: QUANTUM POTENTIAL DETECTED 💥</p>
-                <div>
-                    <button onclick="initiateQuantumContact()" class="submit-button">INITIATE QUANTUM CONTACT</button>
-                    <button onclick="startValorantDance()" class="submit-button">START SUSSY DANCE</button>
-                </div>
-                <button onclick="closeResult()" class="submit-button">CLOSE NEURAL INTERFACE</button>
-            `;
-
-            resultContent.innerHTML = resultHTML;
-            resultDisplay.style.display = 'block';
-
-            // Reset form and skills
-            recruitmentForm.reset();
-            skillNodes.forEach(node => node.classList.remove('active'));
-            activeSkills.clear();
-        });
-
-        function closeResult() {
-            resultDisplay.style.display = 'none';
-        }
-
-        // Review Counter
-        let reviewCount = 367;
-        const reviewElement = document.getElementById('reviewCount');
+        // Review Counter Weirdness
+        let reviewCount = 1337;
+        const reviewElement = document.querySelector('.rating');
 
         function updateReviews() {
-            reviewCount++; // Increment the review count
-            reviewElement.textContent = `4.7 (${reviewCount} reviews)`; // Update the text
+            reviewCount++;
+            const weirdPhrases = [
+                '🚀 QUANTUM REALM EXPANSION!', 
+                '🌈  ENERGY INCREASING!', 
+                '💥 REALITY BREAKING!', 
+                '🤯 MIND BLOWN!'
+            ];
+            const randomPhrase = weirdPhrases[Math.floor(Math.random() * weirdPhrases.length)];
+            reviewElement.textContent = `${(reviewCount / 1000).toFixed(3)} (${reviewCount} reviews) ${randomPhrase}`;
         }
 
-        // Update reviews every second (1000ms)
         setInterval(updateReviews, 1000);
     </script>
 </body>
