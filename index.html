@@ -14,6 +14,12 @@
             --light-text: #f8f8f8;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         @keyframes neural-pulse {
             0%, 100% { transform: scale(1) rotate(0deg); }
             10% { transform: scale(1.02) rotate(3deg); }
@@ -51,66 +57,15 @@
             }
         }
 
-        .gallery-item {
-            transition: all 0.5s ease;
-            animation: sussy-wiggle 3s infinite;
-        }
-
-        .gallery-item:hover {
-            animation: epic-hover 1s infinite;
-        }
-
-        .header {
-            animation: quantum-glitch 5s infinite alternate;
-        }
-
-        .skill-node {
-            transition: all 0.3s ease;
-            animation: sussy-wiggle 2s infinite;
-        }
-
-        .quantum-recruitment-btn {
-            animation: 
-                pulse 2s infinite,
-                sussy-wiggle 3s infinite;
-        }
-
-        .neural-interface {
-            animation: 
-                neural-pulse 5s infinite,
-                quantum-glitch 10s infinite alternate;
-        }
-
-        /* Extra Sussy Animations */
-        @keyframes dimension-shift {
+        @keyframes fly-buck {
             0% { 
-                transform: perspective(1000px) rotateY(0deg);
-                filter: hue-rotate(0deg);
-            }
-            50% { 
-                transform: perspective(1000px) rotateY(45deg);
-                filter: hue-rotate(180deg);
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.7;
             }
             100% { 
-                transform: perspective(1000px) rotateY(0deg);
-                filter: hue-rotate(360deg);
+                transform: translate(100vw, 100vh) rotate(720deg);
+                opacity: 0;
             }
-        }
-
-        .neural-main {
-            transition: all 0.5s ease;
-            animation: dimension-shift 10s infinite;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @keyframes neural-pulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.05) rotate(5deg); }
         }
 
         body {
@@ -153,6 +108,35 @@
             transform: translate(-50%, -50%);
             z-index: 10000;
             mix-blend-mode: difference;
+        }
+
+        .flying-bucks {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .flying-buck {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23green"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2 12l-4.5 4.5 1.5 1.5 6-6-6-6-1.5 1.5 4.5 4.5z"/></svg>');
+            background-size: contain;
+            animation: fly-buck 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        .gallery-item {
+            transition: all 0.5s ease;
+            animation: sussy-wiggle 3s infinite;
+        }
+
+        .gallery-item:hover {
+            animation: epic-hover 1s infinite;
+        }
+
+        .header {
+            animation: quantum-glitch 5s infinite alternate;
         }
 
         .quantum-recruitment-layer {
@@ -224,6 +208,7 @@
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            animation: sussy-wiggle 2s infinite;
         }
 
         .skill-node:hover {
@@ -242,15 +227,74 @@
             text-align: center;
         }
 
-        .result-display {
+        .valorant-dance {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            display: none;
+            z-index: 10000;
+        }
+
+        .valorant-dance-character {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4655"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 18c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"/></svg>');
+            background-size: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: valorant-sussy-dance 1s infinite alternate;
+        }
+
+        @keyframes valorant-sussy-dance {
+            0% { transform: rotate(-10deg) scale(0.9); }
+            100% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        .quantum-contact-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.9);
-            border: 2px solid var(--neural-primary);
-            padding: 20px;
+            z-index: 10001;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .quantum-contact-animation .loading-bar {
+            width: 0%;
+            height: 10px;
+            background: linear-gradient(to right, #00ffff, #ff00ff);
+            margin-top: 20px;
+            transition: width 3s ease-in-out;
+        }
+
+        .quantum-contact-result {
+            color: var(--neural-primary);
             margin-top: 20px;
             text-align: center;
         }
 
-        /* Original Site Styles */
+        .close-quantum-layer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--neural-primary);
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Rest of the original site styles remain the same */
         .header {
             background: linear-gradient(rgba(15,25,35,0.9), rgba(15,25,35,0.9)),
                         url('header-bg.jpg');
@@ -290,18 +334,6 @@
             padding: 1rem;
         }
 
-        .info-section, .testimonies-section {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-bar {
-            background: var(--primary-red);
-            padding: 1rem;
-            text-align: center;
-        }
-
         .quantum-recruitment-btn {
             position: fixed;
             bottom: 20px;
@@ -313,16 +345,30 @@
             border-radius: 50px;
             cursor: pointer;
             z-index: 100;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            animation: 
+                pulse 2s infinite,
+                sussy-wiggle 3s infinite;
         }
     </style>
 </head>
 <body>
+    <!-- Flying Bucks Container -->
+    <div class="flying-bucks" id="flyingBucksContainer"></div>
+
+    <!-- Valorant Dance Container -->
+    <div class="valorant-dance" id="valorantDance">
+        <div class="valorant-dance-character"></div>
+    </div>
+
+    <!-- Quantum Contact Animation -->
+    <div class="quantum-contact-animation" id="quantumContactAnimation">
+        <button class="close-quantum-layer" onclick="closeQuantumContact()">CLOSE QUANTUM PORTAL</button>
+        <div class="quantum-contact-result" id="quantumContactResult">
+            INITIATING QUANTUM COMMUNICATION...
+        </div>
+        <div class="loading-bar" id="quantumContactLoadingBar"></div>
+    </div>
+
     <div class="neural-cursor" id="neuralCursor"></div>
     <div class="neural-overlay" id="dataVisualization"></div>
 
@@ -343,19 +389,6 @@
             </div>
 
             <form class="recruitment-form" id="recruitmentForm">
-                <div class="form-group">
-                    <label>NEURAL NAME</label>
-                    <input type="text" class="form-input" name="name" required placeholder="ENTER QUANTUM IDENTIFIER">
-                </div>
-                <div class="form-group">
-                    <label>GAMING PLATFORM</label>
-                    <select class="form-input" name="platform" required>
-                        <option value="">SELECT NEURAL INTERFACE</option>
-                        <option value="pc">QUANTUM PC</option>
-                        <option value="console">NEURAL CONSOLE</option>
-                        <option value="mobile">POCKET DIMENSION</option>
-                    </select>
-                </div>
                 <div class="form-group">
                     <label>VALORANT RANK</label>
                     <select class="form-input" name="rank" required>
@@ -384,11 +417,12 @@
         </div>
     </div>
 
-    <!-- Original Site Content -->
+    <!-- Quantum Recruitment Button -->
     <button class="quantum-recruitment-btn" onclick="openQuantumRecruitment()">
         QUANTUM RECRUITMENT
     </button>
 
+    <!-- Original Site Content -->
     <header class="header">
         <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
         <div class="rating">★★★★☆ <span id="reviewCount">4.7 (367 reviews)</span></div>
@@ -545,6 +579,89 @@
             });
         });
 
+        // Flying Bucks Generator
+        function generateFlyingBucks() {
+            const bucksContainer = document.getElementById('flyingBucksContainer');
+            const buckCount = Math.floor(Math.random() * 5) + 3; // 3-7 bucks
+
+            for (let i = 0; i < buckCount; i++) {
+                const buck = document.createElement('div');
+                buck.classList.add('flying-buck');
+                
+                // Random starting position
+                buck.style.left = `${Math.random() * window.innerWidth}px`;
+                buck.style.top = `${Math.random() * window.innerHeight}px`;
+                
+                // Random fly duration and delay
+                buck.style.animationDuration = `${5 + Math.random() * 5}s`;
+                buck.style.animationDelay = `${Math.random() * 3}s`;
+
+                bucksContainer.appendChild(buck);
+
+                // Remove buck after animation
+                buck.addEventListener('animationend', () => {
+                    buck.remove();
+                });
+            }
+        }
+
+        // Start generating bucks periodically
+        setInterval(generateFlyingBucks, 10000);
+
+        // Valorant Dance Trigger
+        function startValorantDance() {
+            const valorantDance = document.getElementById('valorantDance');
+            valorantDance.style.display = 'block';
+            
+            setTimeout(() => {
+                valorantDance.style.display = 'none';
+            }, 5000);
+        }
+
+        // Quantum Contact Animation
+        function initiateQuantumContact() {
+            const quantumContactAnimation = document.getElementById('quantumContactAnimation');
+            const loadingBar = document.getElementById('quantumContactLoadingBar');
+            const contactResult = document.getElementById('quantumContactResult');
+
+            quantumContactAnimation.style.display = 'flex';
+            
+            // Simulate quantum connection
+            setTimeout(() => {
+                loadingBar.style.width = '100%';
+            }, 100);
+
+            // Update result messages
+            const messages = [
+                'CONNECTING TO MILAN QUANTUM NETWORK...',
+                'ESTABLISHING SUSSY BAKA PROTOCOL...',
+                'QUANTUM COMMUNICATION SUCCESSFUL! 🚀',
+                'MILAN RECEPTIVITY: 69% 😏',
+                'SKIBIDI RIZZ CONFIRMED! 💥'
+            ];
+
+            let messageIndex = 0;
+            const messageInterval = setInterval(() => {
+                if (messageIndex < messages.length) {
+                    contactResult.textContent = messages[messageIndex];
+                    messageIndex++;
+                } else {
+                    clearInterval(messageInterval);
+                }
+            }, 1500);
+        }
+
+        function closeQuantumContact() {
+            const quantumContactAnimation = document.getElementById('quantumContactAnimation');
+            quantumContactAnimation.style.display = 'none';
+        }
+
+        // Close Quantum Recruitment Layer
+        function closeQuantumRecruitment() {
+            const quantumRecruitmentLayer = document.getElementById('quantumRecruitmentLayer');
+            quantumRecruitmentLayer.style.display = 'none';
+        }
+
         // Form Submission
         recruitmentForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -591,6 +708,10 @@
                 <p><strong>QUANTUM SKILLS:</strong> ${formObject.skills.join(', ').toUpperCase()}</p>
                 <hr>
                 <p>🚀 RECRUITMENT STATUS: QUANTUM POTENTIAL DETECTED 💥</p>
+                <div>
+                    <button onclick="initiateQuantumContact()" class="submit-button">INITIATE QUANTUM CONTACT</button>
+                    <button onclick="startValorantDance()" class="submit-button">START SUSSY DANCE</button>
+                </div>
                 <button onclick="closeResult()" class="submit-button">CLOSE NEURAL INTERFACE</button>
             `;
 
