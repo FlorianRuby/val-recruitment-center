@@ -14,6 +14,94 @@
             --light-text: #f8f8f8;
         }
 
+        @keyframes neural-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            10% { transform: scale(1.02) rotate(3deg); }
+            20% { transform: scale(0.98) rotate(-3deg); }
+            30% { transform: scale(1.05) rotate(6deg); }
+            40% { transform: scale(0.95) rotate(-6deg); }
+            50% { transform: scale(1.08) rotate(9deg); }
+            60% { transform: scale(0.92) rotate(-9deg); }
+            70% { transform: scale(1.1) rotate(12deg); }
+            80% { transform: scale(0.9) rotate(-12deg); }
+            90% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        @keyframes sussy-wiggle {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-2deg); }
+            75% { transform: translateX(5px) rotate(2deg); }
+        }
+
+        @keyframes quantum-glitch {
+            0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            10% { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%); }
+            20% { clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%); }
+            30% { clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%); }
+        }
+
+        @keyframes epic-hover {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 10px rgba(0,255,255,0.3);
+            }
+            50% { 
+                transform: scale(1.05) rotate(3deg);
+                box-shadow: 0 0 20px rgba(255,0,255,0.5);
+            }
+        }
+
+        .gallery-item {
+            transition: all 0.5s ease;
+            animation: sussy-wiggle 3s infinite;
+        }
+
+        .gallery-item:hover {
+            animation: epic-hover 1s infinite;
+        }
+
+        .header {
+            animation: quantum-glitch 5s infinite alternate;
+        }
+
+        .skill-node {
+            transition: all 0.3s ease;
+            animation: sussy-wiggle 2s infinite;
+        }
+
+        .quantum-recruitment-btn {
+            animation: 
+                pulse 2s infinite,
+                sussy-wiggle 3s infinite;
+        }
+
+        .neural-interface {
+            animation: 
+                neural-pulse 5s infinite,
+                quantum-glitch 10s infinite alternate;
+        }
+
+        /* Extra Sussy Animations */
+        @keyframes dimension-shift {
+            0% { 
+                transform: perspective(1000px) rotateY(0deg);
+                filter: hue-rotate(0deg);
+            }
+            50% { 
+                transform: perspective(1000px) rotateY(45deg);
+                filter: hue-rotate(180deg);
+            }
+            100% { 
+                transform: perspective(1000px) rotateY(0deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .neural-main {
+            transition: all 0.5s ease;
+            animation: dimension-shift 10s infinite;
+        }
+
         * {
             margin: 0;
             padding: 0;
