@@ -3,21 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VALORANT E-Sports Rekrutierungszentrum</title>
+    <title>🌀 VALORANT QUANTUM RECRUITMENT NEXUS 🧠</title>
     <style>
         :root {
+            --neural-primary: #00ffff;
+            --neural-secondary: #ff00ff;
+            --background-dark: #000011;
             --primary-red: #ff4655;
             --dark-bg: #0f1923;
             --light-text: #f8f8f8;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        @keyframes neural-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        body {
+            font-family: 'Space Mono', 'Comic Sans MS', monospace;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            position: relative;
+        }
+
+        .neural-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .data-stream {
+            position: absolute;
+            color: rgba(0,255,255,0.3);
+            font-size: 10px;
+            white-space: nowrap;
+            animation: data-stream linear infinite;
+        }
+
+        @keyframes data-stream {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .neural-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neural-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            mix-blend-mode: difference;
+        }
+
+        .quantum-recruitment-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .recruitment-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid var(--neural-primary);
+            padding: 30px;
+        }
+
+        .recruitment-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-input {
+            background: rgba(0,255,255,0.1);
+            border: 1px solid var(--neural-primary);
+            color: var(--neural-primary);
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            background: var(--neural-primary);
+            color: black;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            grid-column: span 2;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background: var(--neural-secondary);
+            transform: scale(1.05);
+        }
+
+        .skill-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skill-node {
+            background: rgba(0,255,255,0.1);
+            border: 1px solid var(--neural-primary);
+            padding: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-node:hover {
+            background: rgba(0,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .skill-node.active {
+            background: rgba(255,0,255,0.5);
+            transform: scale(1.2);
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .result-display {
+            background: rgba(0,0,0,0.9);
+            border: 2px solid var(--neural-primary);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Original Site Styles */
         .header {
             background: linear-gradient(rgba(15,25,35,0.9), rgba(15,25,35,0.9)),
                         url('header-bg.jpg');
@@ -57,21 +202,10 @@
             padding: 1rem;
         }
 
-        .info-section {
+        .info-section, .testimonies-section {
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .rating {
-            color: var(--primary-red);
-            font-size: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .map-container {
-            height: 400px;
-            margin: 2rem 0;
         }
 
         .contact-bar {
@@ -80,58 +214,93 @@
             text-align: center;
         }
 
-        .testimonies-section {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 2rem 0;
-            border-radius: 8px;
-            max-width: 1200px;
-            margin: 2rem auto;
+        .quantum-recruitment-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--neural-primary);
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 100;
+            animation: pulse 2s infinite;
         }
 
-        .testimonies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
-        }
-
-        .testimony {
-            background: rgba(15, 25, 35, 0.8);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-
-        .testimony:hover {
-            transform: translateY(-5px);
-        }
-
-        .testimony h3 {
-            color: var(--primary-red);
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .testimony .stars {
-            color: var(--primary-red);
-            font-size: 0.9rem;
-        }
-
-        .testimony p {
-            font-style: italic;
-            color: var(--light-text);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-top: 1rem;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
     </style>
 </head>
 <body>
+    <div class="neural-cursor" id="neuralCursor"></div>
+    <div class="neural-overlay" id="dataVisualization"></div>
+
+    <!-- Quantum Recruitment Layer -->
+    <div class="quantum-recruitment-layer" id="quantumRecruitmentLayer">
+        <div class="recruitment-container">
+            <h2 style="color: var(--neural-primary); text-align: center; margin-bottom: 20px;">
+                QUANTUM RECRUITMENT PROTOCOL
+            </h2>
+            
+            <div class="skill-matrix">
+                <div class="skill-node" data-skill="aim">AIM</div>
+                <div class="skill-node" data-skill="strategy">STRATEGY</div>
+                <div class="skill-node" data-skill="reflexes">REFLEXES</div>
+                <div class="skill-node" data-skill="positioning">POSITIONING</div>
+                <div class="skill-node" data-skill="communication">COMMUNICATION</div>
+                <div class="skill-node" data-skill="adaptability">ADAPTABILITY</div>
+            </div>
+
+            <form class="recruitment-form" id="recruitmentForm">
+                <div class="form-group">
+                    <label>NEURAL NAME</label>
+                    <input type="text" class="form-input" name="name" required placeholder="ENTER QUANTUM IDENTIFIER">
+                </div>
+                <div class="form-group">
+                    <label>GAMING PLATFORM</label>
+                    <select class="form-input" name="platform" required>
+                        <option value="">SELECT NEURAL INTERFACE</option>
+                        <option value="pc">QUANTUM PC</option>
+                        <option value="console">NEURAL CONSOLE</option>
+                        <option value="mobile">POCKET DIMENSION</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>VALORANT RANK</label>
+                    <select class="form-input" name="rank" required>
+                        <option value="">QUANTUM RANKING</option>
+                        <option value="iron">IRON POTENTIAL</option>
+                        <option value="bronze">BRONZE CALIBRATION</option>
+                        <option value="silver">SILVER SYNCHRONIZATION</option>
+                        <option value="gold">GOLD CONVERGENCE</option>
+                        <option value="platinum">PLATINUM RESONANCE</option>
+                        <option value="diamond">DIAMOND SINGULARITY</option>
+                        <option value="immortal">IMMORTAL TRANSCENDENCE</option>
+                        <option value="radiant">RADIANT CONSCIOUSNESS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>NEURAL CONTACT</label>
+                    <input type="email" class="form-input" name="email" required placeholder="QUANTUM COMMUNICATION CHANNEL">
+                </div>
+                <div id="errorMessage" class="error-message"></div>
+                <button type="submit" class="submit-button">INITIATE QUANTUM RECRUITMENT</button>
+            </form>
+
+            <div id="resultDisplay" class="result-display" style="display:none;">
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Original Site Content -->
+    <button class="quantum-recruitment-btn" onclick="openQuantumRecruitment()">
+        QUANTUM RECRUITMENT
+    </button>
+
     <header class="header">
         <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
         <div class="rating">★★★★☆ <span id="reviewCount">4.7 (367 reviews)</span></div>
@@ -168,10 +337,9 @@
         <p>📞 +41 78 367 97 00</p>
         
         <div class="map-container">
-            <!-- Google Maps Embed Code -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d338.14195390239604!2d8.3899075!3d47.3116888!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900f006ab51817%3A0x9d1febdce9e2b228!2sVALORANT%20E-Sports%20Rekrutierungszentrum!5e0!3m2!1sen!2sch!4v1739718567654!5m2!1sen!2sch" 
                     width="100%" 
-                    height="100%" 
+                    height="400" 
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy" 
@@ -188,7 +356,6 @@
         </ol>
     </section>
 
-    <!-- Testimonies Section -->
     <section class="testimonies-section">
         <h2>What Our Players Say</h2>
         <div class="testimonies-grid">
@@ -213,27 +380,6 @@
                 </h3>
                 <p>"The training programs are intense but worth it. My aim and game sense have improved drastically. If you're serious about going pro, this is the place to be."</p>
             </div>
-            <div class="testimony">
-                <h3>
-                    Pivex
-                    <span class="stars">★★★★★</span>
-                </h3>
-                <p>"The support and resources provided here are unmatched. I've never felt more prepared for competitive play. This center truly cares about its players."</p>
-            </div>
-            <div class="testimony">
-                <h3>
-                    NightOwl_27
-                    <span class="stars">★★★★★</span>
-                </h3>
-                <p>"The 24/7 access is a game-changer! As someone who performs best during late hours, I can practice whenever I'm most focused. The staff is always available and supportive, no matter the time."</p>
-            </div>
-            <div class="testimony">
-                <h3>
-                    SwissAim
-                    <span class="stars">★★★★★</span>
-                </h3>
-                <p>"What sets this center apart is their mental coaching program. They don't just focus on mechanical skills - they help you develop a champion's mindset. My tournament performance has improved dramatically!"</p>
-            </div>
         </div>
     </section>
 
@@ -243,8 +389,138 @@
     </div>
 
     <script>
-        // JavaScript to increment reviews every second
-        let reviewCount = 367; // Initial number of reviews
+        // Neural Cursor
+        const neuralCursor = document.getElementById('neuralCursor');
+        document.addEventListener('mousemove', (e) => {
+            neuralCursor.style.left = `${e.clientX}px`;
+            neuralCursor.style.top = `${e.clientY}px`;
+        });
+
+        // Data Stream Visualization
+        const dataVisualization = document.getElementById('dataVisualization');
+        const dataChars = 'VALORANT0123456789$%#@!*GAMER'.split('');
+
+        function createDataStream() {
+            const stream = document.createElement('div');
+            stream.classList.add('data-stream');
+            
+            stream.style.left = `${Math.random() * 100}%`;
+            stream.style.animationDuration = `${5 + Math.random() * 10}s`;
+            
+            const length = 50 + Math.floor(Math.random() * 100);
+            stream.textContent = Array.from({length}, 
+                () => dataChars[Math.floor(Math.random() * dataChars.length)]
+            ).join('');
+            
+            dataVisualization.appendChild(stream);
+            
+            stream.addEventListener('animationend', () => {
+                stream.remove();
+            });
+        }
+
+        function initDataStreams() {
+            for (let i = 0; i < 20; i++) {
+                createDataStream();
+            }
+        }
+
+        initDataStreams();
+        setInterval(initDataStreams, 5000);
+
+        // Quantum Recruitment Layer
+        const quantumRecruitmentLayer = document.getElementById('quantumRecruitmentLayer');
+        const recruitmentForm = document.getElementById('recruitmentForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const resultDisplay = document.getElementById('resultDisplay');
+        const resultContent = document.getElementById('resultContent');
+
+        function openQuantumRecruitment() {
+            quantumRecruitmentLayer.style.display = 'block';
+        }
+
+        // Skill Node Interactions
+        const skillNodes = document.querySelectorAll('.skill-node');
+        const activeSkills = new Set();
+
+        skillNodes.forEach(node => {
+            node.addEventListener('click', () => {
+                const skill = node.getAttribute('data-skill');
+                
+                if (activeSkills.has(skill)) {
+                    activeSkills.delete(skill);
+                    node.classList.remove('active');
+                } else {
+                    activeSkills.add(skill);
+                    node.classList.add('active');
+                }
+            });
+        });
+
+        // Form Submission
+        recruitmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            errorMessage.textContent = '';
+
+            // Validate form
+            const formInputs = recruitmentForm.querySelectorAll('input, select');
+            let isValid = true;
+
+            formInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                }
+            });
+
+            // Check skills
+            if (activeSkills.size === 0) {
+                isValid = false;
+                errorMessage.textContent = 'PLEASE SELECT AT LEAST ONE QUANTUM SKILL!';
+            }
+
+            if (!isValid) {
+                if (!errorMessage.textContent) {
+                    errorMessage.textContent = 'COMPLETE ALL NEURAL INTERFACE PARAMETERS!';
+                }
+                return;
+            }
+
+            // Collect form data
+            const formData = new FormData(recruitmentForm);
+            const formObject = Object.fromEntries(formData.entries());
+
+            // Add selected skills
+            formObject.skills = Array.from(activeSkills);
+
+            // Generate quantum recruitment analysis
+            const resultHTML = `
+                <p>🧠 NEURAL PROFILE ANALYSIS 🌀</p>
+                <hr>
+                <p><strong>NAME:</strong> ${formObject.name}</p>
+                <p><strong>PLATFORM:</strong> ${formObject.platform.toUpperCase()}</p>
+                <p><strong>RANK:</strong> ${formObject.rank.toUpperCase()}</p>
+                <p><strong>CONTACT:</strong> ${formObject.email}</p>
+                <p><strong>QUANTUM SKILLS:</strong> ${formObject.skills.join(', ').toUpperCase()}</p>
+                <hr>
+                <p>🚀 RECRUITMENT STATUS: QUANTUM POTENTIAL DETECTED 💥</p>
+                <button onclick="closeResult()" class="submit-button">CLOSE NEURAL INTERFACE</button>
+            `;
+
+            resultContent.innerHTML = resultHTML;
+            resultDisplay.style.display = 'block';
+
+            // Reset form and skills
+            recruitmentForm.reset();
+            skillNodes.forEach(node => node.classList.remove('active'));
+            activeSkills.clear();
+        });
+
+        function closeResult() {
+            resultDisplay.style.display = 'none';
+        }
+
+        // Review Counter
+        let reviewCount = 367;
         const reviewElement = document.getElementById('reviewCount');
 
         function updateReviews() {
