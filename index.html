@@ -18,8 +18,14 @@
             margin: 0;
             background-color: var(--dark-bg);
             color: var(--light-text);
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
+        body::-webkit-scrollbar {
+        display: none;
+        }
+        
         /* Professional Navigation */
         .nav-bar {
             background: rgba(15, 25, 35, 0.95);
