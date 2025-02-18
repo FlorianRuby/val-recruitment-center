@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VALORANT Recruitment Center</title>
-        <style>
+    <title>VALORANT Professional Recruitment Center</title>
+    <style>
+        /* Professional Site Styles */
         :root {
             --primary-red: #ff4655;
             --dark-bg: #0f1923;
             --light-text: #f8f8f8;
+            --accent-blue: #1f85de;
         }
 
         body {
@@ -18,349 +20,477 @@
             color: var(--light-text);
         }
 
-        .header {
-            background: linear-gradient(rgba(15,25,35,0.9), rgba(15,25,35,0.9)),
-                        url('header-bg.jpg');
-            padding: 2rem;
-            text-align: center;
+        /* Professional Navigation */
+        .nav-bar {
+            background: rgba(15, 25, 35, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 70, 85, 0.1);
+        }
+
+        .quantum-button {
+            background: linear-gradient(45deg, var(--primary-red), var(--accent-blue));
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .quantum-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Professional Header */
+        .header {
+            background: linear-gradient(rgba(15,25,35,0.8), rgba(15,25,35,0.9)),
+                        url('/api/placeholder/1920/1080');
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-red), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Recruitment Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -2rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Professional Gallery */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
             transition: transform 0.3s;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .caption {
             position: absolute;
             bottom: 0;
-            background: rgba(15,25,35,0.8);
+            background: rgba(15,25,35,0.9);
             width: 100%;
-            padding: 1rem;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
         }
 
-        .info-section {
-            padding: 2rem;
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+
+        /* Professional Features */
+        .features-section {
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minpack(300px, 1fr));
+            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .rating {
-            color: var(--primary-red);
-            font-size: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .map-container {
-            height: 400px;
-            margin: 2rem 0;
-        }
-
-        .contact-bar {
-            background: var(--primary-red);
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .testimonies-section {
+        .feature-card {
+            background: rgba(15, 25, 35, 0.5);
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 2rem 0;
-            border-radius: 8px;
-            max-width: 1200px;
-            margin: 2rem auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 70, 85, 0.2);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        /* Professional Testimonials */
+        .testimonies-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(15,25,35,0.95), rgba(15,25,35,0.95)),
+                        url('/api/placeholder/1920/1080');
+            background-attachment: fixed;
+            background-size: cover;
         }
 
         .testimonies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .testimony {
-            background: rgba(15, 25, 35, 0.8);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
         }
 
         .testimony:hover {
             transform: translateY(-5px);
         }
 
-        .testimony h3 {
-            color: var(--primary-red);
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--dark-bg), var(--primary-red));
         }
 
-        .testimony .stars {
-            color: var(--primary-red);
-            font-size: 0.9rem;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
         }
 
-        .testimony p {
-            font-style: italic;
-            color: var(--light-text);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-top: 1rem;
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
         }
 
-        /* Fun site styles */
-        .fun-site {
+        /* Fun Site Styles */
+        .quantum-realm {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .quantum-content {
+            position: relative;
+            min-height: 100vh;
             font-family: 'Comic Sans MS', 'Papyrus', cursive;
             background: linear-gradient(45deg, 
                 #ff0000, #ff7f00, #ffff00, 
                 #00ff00, #0000ff, #4b0082, 
                 #9400d3);
-            color: #ffffff;
-            min-height: 100vh;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewport="0 0 100 100" style="fill:black;font-size:24px;"><text y="50%">🦄</text></svg>'), auto;
+            animation: gradient-spin 10s linear infinite;
         }
 
-        @keyframes glitch-anim {
-            0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            5% { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%); }
-            10% { clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%); }
+        @keyframes gradient-spin {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
         }
 
-        .universe-container {
-            position: relative;
-            transform-style: preserve-3d;
-            animation: cosmic-spin 20s infinite linear;
-        }
-
-        @keyframes cosmic-spin {
-            0% { transform: rotateY(0deg) rotateX(0deg); }
-            50% { transform: rotateY(180deg) rotateX(90deg); }
-            100% { transform: rotateY(360deg) rotateX(180deg); }
-        }
-
-        .glitch-header {
-            position: relative;
+        .quantum-header {
             text-align: center;
-            background: rgba(15,25,35,0.9);
-            padding: 2rem;
+            padding: 3rem 1rem;
+            position: relative;
             overflow: hidden;
         }
 
-        .glitch-header::before,
-        .glitch-header::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .quantum-title {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 
+                3px 3px 0 #ff0000,
+                -3px -3px 0 #00ff00,
+                3px -3px 0 #0000ff,
+                -3px 3px 0 #ff00ff;
+            animation: title-dance 2s infinite;
         }
 
-        .glitch-header::before {
-            left: 2px;
-            text-shadow: -2px 0 red;
-            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
+        @keyframes title-dance {
+            0%, 100% { transform: rotate(-2deg) scale(1); }
+            50% { transform: rotate(2deg) scale(1.05); }
         }
 
-        .glitch-header::after {
-            left: -2px;
-            text-shadow: -2px 0 blue;
-            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-
-        .fun-gallery {
+        .quantum-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             padding: 2rem;
         }
 
-        .fun-gallery-item {
-            transition: all 0.5s ease;
-            transform: rotate(0deg) scale(1);
-            filter: brightness(0.8) contrast(1.2);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .fun-gallery-item:hover {
-            transform: rotate(360deg) scale(1.1);
-            filter: brightness(1.2) contrast(1.5) hue-rotate(90deg);
-        }
-
-        .testimonial-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            transform: skew(-5deg);
-            padding: 2rem;
-        }
-
-        .testimony {
-            background: rgba(69, 69, 69, 0.8);
-            border: 3px solid var(--cosmic-purple);
+        .quantum-item {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
             padding: 1rem;
             text-align: center;
-            transition: all 0.3s ease;
-            perspective: 1000px;
-        }
-
-        .testimony:hover {
-            transform: rotateY(180deg);
-            background: rgba(255, 70, 85, 0.9);
-        }
-
-        .easter-egg-zone {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .secret-button {
-            background: var(--glitch-red);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            animation: pulse 2s infinite;
+            transition: all 0.5s;
             transform-style: preserve-3d;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(10deg); }
+        .quantum-item:hover {
+            transform: rotateY(180deg) scale(1.1);
+            background: rgba(255, 70, 85, 0.4);
         }
 
-        .matrix-background {
+        .quantum-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .quantum-feature {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #ff00ff;
+            animation: border-pulse 2s infinite;
+        }
+
+        @keyframes border-pulse {
+            0%, 100% { border-color: #ff00ff; }
+            50% { border-color: #00ffff; }
+        }
+
+        .quantum-exit {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(45deg, #ff0000, #ff00ff);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Comic Sans MS';
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2001;
+            animation: button-float 2s infinite;
+        }
+
+        @keyframes button-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .matrix-rain {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
-            opacity: 0.3;
+            z-index: 1999;
         }
 
-        .exit-button {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: #ff4655;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            z-index: 1000;
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header {
+            .nav-bar {
                 flex-direction: column;
-                text-align: center;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
                 gap: 1rem;
             }
 
-            .nav {
-                flex-direction: column;
-                align-items: center;
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .section {
-                padding: 1rem;
+            .gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Professional Site -->
+    <nav class="nav-bar">
+        <div class="nav-logo">VALORANT RC</div>
+        <div class="nav-links">
+            <a href="#facilities" class="nav-link">Facilities</a>
+            <a href="#program" class="nav-link">Program</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button class="quantum-button" onclick="enterQuantumRealm()">Enter Quantum Realm ⚡</button>
+        </div>
+    </nav>
+
     <header class="header">
-        <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
-        <div class="rating">★★★★☆ <span id="reviewCount">4.7 (367 reviews)</span></div>
-            <nav class="nav">
-                <button class="button" onclick="enterQuantumRealm()">?</button>
-            </nav>
+        <h1>VALORANT E-Sports Recruitment Center</h1>
+        <p>Where Professional Gamers Are Made</p>
+        <div class="rating" id="reviewCount">★★★★★ 4.9 (367 reviews)</div>
     </header>
 
-    <section class="gallery">
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Pro Players Recruited</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Training Facility</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Pro Coaches</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Success Rate</div>
+        </div>
+    </div>
+
+    <section id="facilities" class="gallery">
         <div class="gallery-item">
-            <img src="assets/2.png" alt="Training Facility">
+            <img src="/api/placeholder/400/300" alt="Training Facility">
             <div class="caption">
-                <h3>Pro Training Facilities</h3>
-                <p>State-of-the-art gaming stations with high-end equipment</p>
+                <h3>Advanced Training Facilities</h3>
+                <p>State-of-the-art gaming stations with the latest hardware</p>
             </div>
         </div>
         <div class="gallery-item">
-            <img src="assets/3.png" alt="Tournament Hall">
-            <div class="caption">
-                <h3>Tournament Arena</h3>
-                <p>Main stage for competitive matches and scrims</p>
-            </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/1.png" alt="Team Photo">
+            <img src="/api/placeholder/400/300" alt="Coaching Area">
             <div class="caption">
                 <h3>Professional Coaching</h3>
-                <p>Learn from experienced VALORANT veterans</p>
+                <p>One-on-one training with experienced VALORANT coaches</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="/api/placeholder/400/300" alt="Tournament Hall">
+            <div class="caption">
+                <h3>Tournament Arena</h3>
+                <p>Regular tournaments and competitive matches</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="/api/placeholder/400/300" alt="Analytics Lab">
+            <div class="caption">
+                <h3>Performance Analytics Lab</h3>
+                <p>Advanced performance tracking and improvement analysis</p>
             </div>
         </div>
     </section>
 
-    <section class="info-section">
-        <h2>Recruitment Center Details</h2>
-        <p>📍 Address: Zugerstrasse 7b, 8917 Oberlunkhofen</p>
-        <p>🕒 Open 24 hours</p>
-        <p>📞 +41 78 367 97 00</p>
-        
-        <div class="map-container">
-            <!-- Google Maps Embed Code -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d338.14195390239604!2d8.3899075!3d47.3116888!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900f006ab51817%3A0x9d1febdce9e2b228!2sVALORANT%20E-Sports%20Rekrutierungszentrum!5e0!3m2!1sen!2sch!4v1739718567654!5m2!1sen!2sch" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+    <section id="program" class="features-section">
+        <h2>Professional Development Program</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Skill Assessment & Training</h3>
+                <ul>
+                    <li>Comprehensive skill evaluation</li>
+                    <li>Personalized training programs</li>
+                    <li>Regular progress tracking</li>
+                    <li>Advanced gameplay analysis</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Mental Conditioning</h3>
+                <ul>
+                    <li>Performance psychology coaching</li>
+                    <li>Stress management techniques</li>
+                    <li>Team communication training</li>
+                    <li>Competition preparation</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Professional Development</h3>
+                <ul>
+                    <li>Personal brand building</li>
+                    <li>Stream setup and management</li>
+                    <li>Social media presence</li>
+                    <li>Contract negotiation guidance</li>
+                </ul>
+            </div>
         </div>
-
-        <h3>Recruitment Process</h3>
-        <ol>
-            <li>Submit your competitive stats</li>
-            <li>Initial skill assessment</li>
-            <li>Team compatibility trial</li>
-            <li>Professional contract signing</li>
-        </ol>
     </section>
 
     <!-- Testimonies Section -->
@@ -412,84 +542,122 @@
         </div>
     </section>
 
-    <div class="contact-bar">
-        <h3>Ready to Join? Contact Us Now!</h3>
-        <p>Email: recruitment@valorant-esports.ch | Phone: +41 78 367 97 00</p>
-    </div>
+    <section id="contact" class="contact-section">
+        <h2>Connect With Us</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Location</h3>
+                <p>📍 Zugerstrasse 7b, 8917 Oberlunkhofen</p>
+            </div>
+            <div class="contact-card">
+                <h3>Contact</h3>
+                <p>📞 +41 78 367 97 00</p>
+                <p>📧 recruitment@valorant-esports.ch</p>
+            </div>
+            <div class="contact-card">
+                <h3>Hours</h3>
+                <p>🕒 Open 24/7</p>
+                <p>Staff available at all times</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Fun Site (Initially Hidden) -->
-    <div class="fun-site">
-        <canvas class="matrix-background" id="matrixCanvas"></canvas>
-        <button class="exit-button" onclick="exitQuantumRealm()">Exit Quantum Realm</button>
+    <!-- Quantum Realm -->
+    <div class="quantum-realm">
+        <canvas class="matrix-rain" id="matrixCanvas"></canvas>
+        <button class="quantum-exit" onclick="exitQuantumRealm()">🚀 EXIT QUANTUM REALM 👽</button>
         
-        <div class="universe-container">
-            <header class="glitch-header" data-text="VALORANT QUANTUM RECRUITMENT CENTER">
-                <h1>VALORANT QUANTUM RECRUITMENT CENTER</h1>
-                <div class="rating">
-                    4.20 (1337 reviews)
+        <div class="quantum-content">
+            <header class="quantum-header">
+                <h1 class="quantum-title">🌈 QUANTUM VALORANT DIMENSION 🚀</h1>
+                <div class="quantum-rating" id="quantumReviewCount">
+                    4.20 (1337 reviews) 🌟 REALITY BENDING!
                 </div>
             </header>
 
-            <div class="fun-gallery">
-                <div class="fun-gallery-item" onclick="alert('YOU CLICKED THE PORTAL OF DESTINY! 🌈')">
-                    <img src="assets/1.png" alt="Quantum Training Facility">
-                    <div class="caption">
-                        <h3>INTERDIMENSIONAL GAMER ZONE</h3>
-                    </div>
+            <div class="quantum-gallery">
+                <div class="quantum-item" onclick="alert('🎮 YOU HAVE ACTIVATED THE INTERDIMENSIONAL GAMING PORTAL! 🎮')">
+                    <img src="/api/placeholder/400/300" alt="Quantum Training">
+                    <h3>🌌 HYPERDIMENSIONAL TRAINING ZONE</h3>
+                    <p>Where time and space bend to your will! Master abilities across multiple realities!</p>
                 </div>
-                <div class="fun-gallery-item">
-                    <img src="assets/3.png" alt="Multiverse Tournament Hall">
-                    <div class="caption">
-                        <h3>REALITY-BENDING ARENA</h3>
-                    </div>
+                <div class="quantum-item" onclick="alert('🧠 YOUR MIND IS NOW EXPANDING BEYOND THE COSMOS! 🌌')">
+                    <img src="/api/placeholder/400/300" alt="Mind Enhancement">
+                    <h3>🧠 NEURAL NETWORK ENHANCER</h3>
+                    <p>Upload pro skills directly to your brain! (Warning: May cause spontaneous dance moves)</p>
                 </div>
-                <div class="fun-gallery-item">
-                    <img src="assets/2.png" alt="Cosmic Team Photo">
-                    <div class="caption">
-                        <h3>TENZ COACHING PORTAL</h3>
-                    </div>
+                <div class="quantum-item" onclick="alert('⚡ COSMIC ENERGY SURGE DETECTED! ⚡')">
+                    <img src="/api/placeholder/400/300" alt="Energy Chamber">
+                    <h3>⚡ QUANTUM ENERGY CHAMBER</h3>
+                    <p>Harness the power of a thousand energy drinks! Now with 100% less jitters!</p>
                 </div>
             </div>
 
-            <section class="testimonial-matrix">
-                <div class="testimony">
-                    <h3>TenZ</h3>
-                    <p>"Went from zero to hero in QUANTUM NANOSECONDS!"</p>
+            <div class="quantum-features">
+                <div class="quantum-feature">
+                    <h3>🎯 ACHIEVEMENT UNLOCKED</h3>
+                    <p>"Master of All Realities"</p>
+                    <p>You've transcended normal gaming physics!</p>
                 </div>
-                <div class="testimony">
-                    <h3>Kamikaze 🤯</h3>
-                    <p>"My aim transcends physical reality! MATRIX ACTIVATED! 💥"</p>
+                <div class="quantum-feature">
+                    <h3>🌈 POWER LEVEL</h3>
+                    <p>OVER 9000!!!</p>
+                    <p>Your skills are now beyond mortal comprehension!</p>
                 </div>
-                <div class="testimony">
-                    <h3>195 WPM 💨</h3>
-                    <p>"Typing speed = LIGHT SPEED COMPUTATION! 🖥️"</p>
+                <div class="quantum-feature">
+                    <h3>🚀 SPEED RATING</h3>
+                    <p>QUANTUM FAST</p>
+                    <p>You move faster than light itself! (In game only)</p>
                 </div>
-            </section>
-        </div>
+            </div>
 
-        <div class="easter-egg-zone">
-            <button class="secret-button" onclick="alert('🌈 CONGRATULATIONS! YOU\'VE UNLOCKED THE COSMIC GAMER ACHIEVEMENT! 🚀')">
-                PRESS FOR QUANTUM POWER!
-            </button>
-            <button class="secret-button" onclick="alert('YOU ARE NOW THE CHOSEN ONE OF THE UNIVERSE! 👽')">
-                ACTIVATE SINGULARITY!
-            </button>
+            <div class="quantum-testimonials">
+                <div class="quantum-testimony">
+                    <h3>🤖 CyberTenz_X</h3>
+                    <p>"My reflexes are now faster than quantum entanglement! POGGERS IN THE QUANTUM CHAT!"</p>
+                </div>
+                <div class="quantum-testimony">
+                    <h3>🌟 StardustWarrior_42</h3>
+                    <p>"Reached Radiant rank in 17 parallel universes simultaneously! COSMIC GAMING FTW!"</p>
+                </div>
+                <div class="quantum-testimony">
+                    <h3>🎮 QuantumPro_999</h3>
+                    <p>"Finally unlocked my third eye! Now I can see enemy positions in 5D! NO CAP FR FR!"</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-                // JavaScript to increment reviews every second
-        let reviewCount = 367; // Initial number of reviews
-        const reviewElement = document.getElementById('reviewCount');
+        // Professional site review counter
+        let proReviewCount = 367;
+        const proReviewElement = document.getElementById('reviewCount');
+        
+        function updateProReviews() {
+            proReviewCount++;
+            proReviewElement.textContent = `★★★★★ 4.9 (${proReviewCount} reviews)`;
+        }
+        
+        setInterval(updateProReviews, 5000);
 
-        function updateReviews() {
-            reviewCount++; // Increment the review count
-            reviewElement.textContent = `4.7 (${reviewCount} reviews)`; // Update the text
+        // Quantum realm functionality
+        let quantumReviewCount = 1337;
+        const quantumReviewElement = document.getElementById('quantumReviewCount');
+        
+        function updateQuantumReviews() {
+            quantumReviewCount++;
+            const quantumPhrases = [
+                '🚀 QUANTUM SURGE!',
+                '🌈 REALITY BENDING!',
+                '💫 COSMIC POWER!',
+                '🌌 DIMENSION SHIFT!',
+                '⚡ ENERGY OVERFLOW!'
+            ];
+            const randomPhrase = quantumPhrases[Math.floor(Math.random() * quantumPhrases.length)];
+            quantumReviewElement.textContent = `${(quantumReviewCount / 1000).toFixed(3)} (${quantumReviewCount} reviews) ${randomPhrase}`;
         }
 
-        // Update reviews every second (1000ms)
-        setInterval(updateReviews, 1000);
-        // Matrix background
+        // Matrix animation
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -497,20 +665,20 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const chars = 'VALORANT0123456789$%#@!*GAMER'.split('');
-        const fontSize = 10;
+        const chars = '🎮⚡🌟✨💫🎯🎲🎪VALORANTゲーム1234567890'.split('');
+        const fontSize = 20;
         const columns = canvas.width / fontSize;
-
         const drops = Array.from({ length: columns }, () => 1);
 
         function drawMatrix() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            ctx.fillStyle = '#0F0';
+            ctx.fillStyle = '#00ff00';
             ctx.font = `${fontSize}px monospace`;
             
             for (let i = 0; i < drops.length; i++) {
@@ -524,41 +692,19 @@
             }
         }
 
-        function animateMatrix() {
-            drawMatrix();
-            requestAnimationFrame(animateMatrix);
-        }
+        let matrixAnimation;
 
-        // Review counter
-        let reviewCount = 1337;
-        const reviewElement = document.querySelector('.rating');
-
-        function updateReviews() {
-            reviewCount++;
-            const weirdPhrases = [
-                '🚀 QUANTUM REALM EXPANSION!', 
-                '🌈 ENERGY INCREASING!', 
-                '💥 REALITY BREAKING!', 
-                '🤯 MIND BLOWN!'
-            ];
-            const randomPhrase = weirdPhrases[Math.floor(Math.random() * weirdPhrases.length)];
-            reviewElement.textContent = `${(reviewCount / 1000).toFixed(3)} (${reviewCount} reviews) ${randomPhrase}`;
-        }
-
-        // Site switching functions
         function enterQuantumRealm() {
-            document.querySelector('.professional-site').style.display = 'none';
-            document.querySelector('.fun-site').style.display = 'block';
+            document.querySelector('.quantum-realm').style.display = 'block';
             document.body.style.overflow = 'hidden';
-            // Start animations when entering quantum realm
-            animateMatrix();
-            setInterval(updateReviews, 1000);
+            matrixAnimation = setInterval(drawMatrix, 50);
+            setInterval(updateQuantumReviews, 1000);
         }
 
         function exitQuantumRealm() {
-            document.querySelector('.professional-site').style.display = 'block';
-            document.querySelector('.fun-site').style.display = 'none';
+            document.querySelector('.quantum-realm').style.display = 'none';
             document.body.style.overflow = 'auto';
+            clearInterval(matrixAnimation);
         }
     </script>
 </body>
