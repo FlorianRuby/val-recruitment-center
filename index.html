@@ -4,114 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALORANT Recruitment Center</title>
-    <style>
-        /* Professional styles */
+        <style>
         :root {
-            --primary: #ff4655;
-            --secondary: #0f1923;
-            --text: #333333;
-            --light: #ffffff;
-            --glitch-red: #ff4655;
-            --cosmic-purple: #8a4fff;
+            --primary-red: #ff4655;
+            --dark-bg: #0f1923;
+            --light-text: #f8f8f8;
         }
 
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
-            color: var(--text);
-            background: #f5f5f5;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
         }
 
-        .professional-site {
-            display: block;
-        }
-
-        .fun-site {
-            display: none;
-        }
-
-        /* Professional styles */
         .header {
-            background: var(--secondary);
-            color: var(--light);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: linear-gradient(rgba(15,25,35,0.9), rgba(15,25,35,0.9)),
+                        url('header-bg.jpg');
+            padding: 2rem;
+            text-align: center;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .nav {
-            display: flex;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1rem;
+            padding: 2rem;
         }
 
-        .button {
-            background: var(--primary);
-            color: var(--light);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
-        .button:hover {
-            background: #ff5864;
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
         }
 
-        .section {
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(15,25,35,0.8);
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .info-section {
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .professional-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .rating {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .map-container {
+            height: 400px;
             margin: 2rem 0;
         }
 
-        .professional-gallery-item {
-            background: var(--light);
+        .contact-bar {
+            background: var(--primary-red);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .testimonies-section {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 2rem auto;
         }
 
-        .professional-gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .professional-gallery-item .caption {
+        .testimonies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             padding: 1rem;
         }
 
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .testimonial {
-            background: var(--light);
+        .testimony {
+            background: rgba(15, 25, 35, 0.8);
+            border-radius: 12px;
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
         }
 
-        .testimonial h3 {
-            color: var(--primary);
-            margin-top: 0;
+        .testimony:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimony h3 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .testimony .stars {
+            color: var(--primary-red);
+            font-size: 0.9rem;
+        }
+
+        .testimony p {
+            font-style: italic;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 1rem;
         }
 
         /* Fun site styles */
@@ -288,61 +304,114 @@
     </style>
 </head>
 <body>
-    <!-- Professional Site -->
-    <div class="professional-site">
-        <header class="header">
-            <h1>VALORANT Recruitment Center</h1>
-            <nav class="nav">
-                <button class="button" onclick="window.location.href='#facilities'">Our Facilities</button>
-                <button class="button" onclick="window.location.href='#testimonials'">Testimonials</button>
-                <button class="button" onclick="enterQuantumRealm()">?</button>
-            </nav>
-        </header>
+    <header class="header">
+        <h1>VALORANT E-Sports Rekrutierungszentrum</h1>
+        <div class="rating">★★★★☆ <span id="reviewCount">4.7 (367 reviews)</span></div>
+    </header>
 
-        <section id="facilities" class="section">
-            <h2>Training Facilities</h2>
-            <div class="professional-gallery">
-                <div class="professional-gallery-item">
-                    <img src="assets/1.png" alt="Training Facility">
-                    <div class="caption">
-                        <h3>Professional Training Zone</h3>
-                        <p>State-of-the-art facilities for competitive practice</p>
-                    </div>
-                </div>
-                <div class="professional-gallery-item">
-                    <img src="assets/3.png" alt="Tournament Hall">
-                    <div class="caption">
-                        <h3>Tournament Arena</h3>
-                        <p>Professional competition space with top-tier equipment</p>
-                    </div>
-                </div>
-                <div class="professional-gallery-item">
-                    <img src="assets/2.png" alt="Coaching Area">
-                    <div class="caption">
-                        <h3>Coaching Area</h3>
-                        <p>One-on-one training with professional coaches</p>
-                    </div>
-                </div>
+    <section class="gallery">
+        <div class="gallery-item">
+            <img src="assets/2.png" alt="Training Facility">
+            <div class="caption">
+                <h3>Pro Training Facilities</h3>
+                <p>State-of-the-art gaming stations with high-end equipment</p>
             </div>
-        </section>
+        </div>
+        <div class="gallery-item">
+            <img src="assets/3.png" alt="Tournament Hall">
+            <div class="caption">
+                <h3>Tournament Arena</h3>
+                <p>Main stage for competitive matches and scrims</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="assets/1.png" alt="Team Photo">
+            <div class="caption">
+                <h3>Professional Coaching</h3>
+                <p>Learn from experienced VALORANT veterans</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="testimonials" class="section">
-            <h2>Player Testimonials</h2>
-            <div class="testimonials">
-                <div class="testimonial">
-                    <h3>TenZ</h3>
-                    <p>"The facilities and coaching have significantly improved my gameplay."</p>
-                </div>
-                <div class="testimonial">
-                    <h3>195 wpm</h3>
-                    <p>"Professional environment with excellent training programs."</p>
-                </div>
-                <div class="testimonial">
-                    <h3>Kamikaze</h3>
-                    <p>"Great community and top-tier practice environment."</p>
-                </div>
+    <section class="info-section">
+        <h2>Recruitment Center Details</h2>
+        <p>📍 Address: Zugerstrasse 7b, 8917 Oberlunkhofen</p>
+        <p>🕒 Open 24 hours</p>
+        <p>📞 +41 78 367 97 00</p>
+        
+        <div class="map-container">
+            <!-- Google Maps Embed Code -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d338.14195390239604!2d8.3899075!3d47.3116888!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900f006ab51817%3A0x9d1febdce9e2b228!2sVALORANT%20E-Sports%20Rekrutierungszentrum!5e0!3m2!1sen!2sch!4v1739718567654!5m2!1sen!2sch" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>Recruitment Process</h3>
+        <ol>
+            <li>Submit your competitive stats</li>
+            <li>Initial skill assessment</li>
+            <li>Team compatibility trial</li>
+            <li>Professional contract signing</li>
+        </ol>
+    </section>
+
+    <!-- Testimonies Section -->
+    <section class="testimonies-section">
+        <h2>What Our Players Say</h2>
+        <div class="testimonies-grid">
+            <div class="testimony">
+                <h3>
+                    Tenz
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"Joining this recruitment center was the best decision of my career. The coaching staff helped me refine my skills and take my gameplay to the next level. Highly recommended!"</p>
             </div>
-        </section>
+            <div class="testimony">
+                <h3>
+                    Kamikaze
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"The facilities here are top-notch, and the team environment is incredible. I've grown so much as a player and as a teammate. Thank you for believing in me!"</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    195 WPM
+                    <span class="stars">★★★★☆</span>
+                </h3>
+                <p>"The training programs are intense but worth it. My aim and game sense have improved drastically. If you're serious about going pro, this is the place to be."</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    Pivex
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"The support and resources provided here are unmatched. I've never felt more prepared for competitive play. This center truly cares about its players."</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    NightOwl_27
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"The 24/7 access is a game-changer! As someone who performs best during late hours, I can practice whenever I'm most focused. The staff is always available and supportive, no matter the time."</p>
+            </div>
+            <div class="testimony">
+                <h3>
+                    SwissAim
+                    <span class="stars">★★★★★</span>
+                </h3>
+                <p>"What sets this center apart is their mental coaching program. They don't just focus on mechanical skills - they help you develop a champion's mindset. My tournament performance has improved dramatically!"</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-bar">
+        <h3>Ready to Join? Contact Us Now!</h3>
+        <p>Email: recruitment@valorant-esports.ch | Phone: +41 78 367 97 00</p>
     </div>
 
     <!-- Fun Site (Initially Hidden) -->
@@ -406,6 +475,17 @@
     </div>
 
     <script>
+                // JavaScript to increment reviews every second
+        let reviewCount = 367; // Initial number of reviews
+        const reviewElement = document.getElementById('reviewCount');
+
+        function updateReviews() {
+            reviewCount++; // Increment the review count
+            reviewElement.textContent = `4.7 (${reviewCount} reviews)`; // Update the text
+        }
+
+        // Update reviews every second (1000ms)
+        setInterval(updateReviews, 1000);
         // Matrix background
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
