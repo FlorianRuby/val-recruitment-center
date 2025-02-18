@@ -3,31 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌈 VALORANT QUANTUM  RECRUITMENT CENTER 🚀</title>
+    <title>VALORANT Recruitment Center</title>
     <style>
+        /* Professional styles */
         :root {
+            --primary: #ff4655;
+            --secondary: #0f1923;
+            --text: #333333;
+            --light: #ffffff;
             --glitch-red: #ff4655;
             --cosmic-purple: #8a4fff;
-            ---rainbow: linear-gradient(45deg, 
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background: #f5f5f5;
+        }
+
+        .professional-site {
+            display: block;
+        }
+
+        .fun-site {
+            display: none;
+        }
+
+        /* Professional styles */
+        .header {
+            background: var(--secondary);
+            color: var(--light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background: #ff5864;
+        }
+
+        .section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .professional-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .professional-gallery-item {
+            background: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .professional-gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .professional-gallery-item .caption {
+            padding: 1rem;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .testimonial {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .testimonial h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        /* Fun site styles */
+        .fun-site {
+            font-family: 'Comic Sans MS', 'Papyrus', cursive;
+            background: linear-gradient(45deg, 
                 #ff0000, #ff7f00, #ffff00, 
                 #00ff00, #0000ff, #4b0082, 
                 #9400d3);
+            color: #ffffff;
+            min-height: 100vh;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewport="0 0 100 100" style="fill:black;font-size:24px;"><text y="50%">🦄</text></svg>'), auto;
         }
 
         @keyframes glitch-anim {
             0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
             5% { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%); }
             10% { clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%); }
-        }
-
-        body {
-            font-family: 'Comic Sans MS', 'Papyrus', cursive;
-            background: var(---rainbow);
-            color: #ffffff;
-            margin: 0;
-            overflow-x: hidden;
-            perspective: 1000px;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewport="0 0 100 100" style="fill:black;font-size:24px;"><text y="50%">🦄</text></svg>'), auto;
         }
 
         .universe-container {
@@ -74,13 +176,23 @@
             animation: glitch-anim 5s infinite linear alternate-reverse;
         }
 
-        .gallery-item {
+        .fun-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .fun-gallery-item {
             transition: all 0.5s ease;
             transform: rotate(0deg) scale(1);
             filter: brightness(0.8) contrast(1.2);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
         }
 
-        .gallery-item:hover {
+        .fun-gallery-item:hover {
             transform: rotate(360deg) scale(1.1);
             filter: brightness(1.2) contrast(1.5) hue-rotate(90deg);
         }
@@ -90,6 +202,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
             transform: skew(-5deg);
+            padding: 2rem;
         }
 
         .testimony {
@@ -140,80 +253,175 @@
             z-index: -1;
             opacity: 0.3;
         }
+
+        .exit-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #ff4655;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 1000;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <canvas class="matrix-background" id="matrixCanvas"></canvas>
-
-    <div class="universe-container">
-        <header class="glitch-header" data-text="VALORANT QUANTUM  RECRUITMENT CENTER">
-            <h1>VALORANT QUANTUM RECRUITMENT CENTER</h1>
-            <div class="rating">
-                4.20 (1337 reviews)
-            </div>
+    <!-- Professional Site -->
+    <div class="professional-site">
+        <header class="header">
+            <h1>VALORANT Recruitment Center</h1>
+            <nav class="nav">
+                <button class="button" onclick="window.location.href='#facilities'">Our Facilities</button>
+                <button class="button" onclick="window.location.href='#testimonials'">Testimonials</button>
+                <button class="button" onclick="enterQuantumRealm()">?</button>
+            </nav>
         </header>
 
-        <section class="gallery">
-            <div class="gallery-item" onclick="alert('YOU CLICKED THE PORTAL OF DESTINY! 🌈')">
-                <img src="assets/2.png" alt="Quantum Training Facility">
-                <div class="caption">
-                    <h3>INTERDIMENSIONAL GAMER ZONE</h3>
+        <section id="facilities" class="section">
+            <h2>Training Facilities</h2>
+            <div class="professional-gallery">
+                <div class="professional-gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Training Facility">
+                    <div class="caption">
+                        <h3>Professional Training Zone</h3>
+                        <p>State-of-the-art facilities for competitive practice</p>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/3.png" alt="Multiverse Tournament Hall">
-                <div class="caption">
-                    <h3>REALITY-BENDING ARENA</h3>
+                <div class="professional-gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Tournament Hall">
+                    <div class="caption">
+                        <h3>Tournament Arena</h3>
+                        <p>Professional competition space with top-tier equipment</p>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/1.png" alt="Cosmic Team Photo">
-                <div class="caption">
-                    <h3>TENZ COACHING PORTAL</h3>
+                <div class="professional-gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Coaching Area">
+                    <div class="caption">
+                        <h3>Coaching Area</h3>
+                        <p>One-on-one training with professional coaches</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="testimonial-matrix">
-            <div class="testimony">
-                <h3>TenZ</h3>
-                <p>"Went from zero to hero in QUANTUM NANOSECONDS!"</p>
-            </div>
-            <div class="testimony">
-                <h3>Kamikaze 🤯</h3>
-                <p>"My aim transcends physical reality! MATRIX ACTIVATED! 💥"</p>
-            </div>
-            <div class="testimony">
-                <h3>195 WPM 💨</h3>
-                <p>"Typing speed = LIGHT SPEED COMPUTATION! 🖥️"</p>
+        <section id="testimonials" class="section">
+            <h2>Player Testimonials</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <h3>TenZ</h3>
+                    <p>"The facilities and coaching have significantly improved my gameplay."</p>
+                </div>
+                <div class="testimonial">
+                    <h3>Alex K.</h3>
+                    <p>"Professional environment with excellent training programs."</p>
+                </div>
+                <div class="testimonial">
+                    <h3>Sarah M.</h3>
+                    <p>"Great community and top-tier practice environment."</p>
+                </div>
             </div>
         </section>
     </div>
 
-    <div class="easter-egg-zone">
-        <button class="secret-button" onclick="alert('🌈 CONGRATULATIONS! YOU\'VE UNLOCKED THE COSMIC GAMER ACHIEVEMENT! 🚀')">
-            PRESS FOR QUANTUM POWER!
-        </button>
-        <button class="secret-button" onclick="alert('YOU ARE NOW THE CHOSEN ONE OF THE  UNIVERSE! 👽')">
-            ACTIVATE  SINGULARITY!
-        </button>
+    <!-- Fun Site (Initially Hidden) -->
+    <div class="fun-site">
+        <canvas class="matrix-background" id="matrixCanvas"></canvas>
+        <button class="exit-button" onclick="exitQuantumRealm()">Exit Quantum Realm</button>
+        
+        <div class="universe-container">
+            <header class="glitch-header" data-text="VALORANT QUANTUM RECRUITMENT CENTER">
+                <h1>VALORANT QUANTUM RECRUITMENT CENTER</h1>
+                <div class="rating">
+                    4.20 (1337 reviews)
+                </div>
+            </header>
+
+            <div class="fun-gallery">
+                <div class="fun-gallery-item" onclick="alert('YOU CLICKED THE PORTAL OF DESTINY! 🌈')">
+                    <img src="/api/placeholder/400/320" alt="Quantum Training Facility">
+                    <div class="caption">
+                        <h3>INTERDIMENSIONAL GAMER ZONE</h3>
+                    </div>
+                </div>
+                <div class="fun-gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Multiverse Tournament Hall">
+                    <div class="caption">
+                        <h3>REALITY-BENDING ARENA</h3>
+                    </div>
+                </div>
+                <div class="fun-gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Cosmic Team Photo">
+                    <div class="caption">
+                        <h3>TENZ COACHING PORTAL</h3>
+                    </div>
+                </div>
+            </div>
+
+            <section class="testimonial-matrix">
+                <div class="testimony">
+                    <h3>TenZ</h3>
+                    <p>"Went from zero to hero in QUANTUM NANOSECONDS!"</p>
+                </div>
+                <div class="testimony">
+                    <h3>Kamikaze 🤯</h3>
+                    <p>"My aim transcends physical reality! MATRIX ACTIVATED! 💥"</p>
+                </div>
+                <div class="testimony">
+                    <h3>195 WPM 💨</h3>
+                    <p>"Typing speed = LIGHT SPEED COMPUTATION! 🖥️"</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="easter-egg-zone">
+            <button class="secret-button" onclick="alert('🌈 CONGRATULATIONS! YOU\'VE UNLOCKED THE COSMIC GAMER ACHIEVEMENT! 🚀')">
+                PRESS FOR QUANTUM POWER!
+            </button>
+            <button class="secret-button" onclick="alert('YOU ARE NOW THE CHOSEN ONE OF THE UNIVERSE! 👽')">
+                ACTIVATE SINGULARITY!
+            </button>
+        </div>
     </div>
 
     <script>
-        // MATRIX BACKGROUND MAGIC
+        // Matrix background
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         const chars = 'VALORANT0123456789$%#@!*GAMER'.split('');
         const fontSize = 10;
         const columns = canvas.width / fontSize;
 
-        const drops = [];
-        for (let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
+        const drops = Array.from({ length: columns }, () => 1);
 
         function drawMatrix() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
@@ -238,9 +446,7 @@
             requestAnimationFrame(animateMatrix);
         }
 
-        animateMatrix();
-
-        // Review Counter Weirdness
+        // Review counter
         let reviewCount = 1337;
         const reviewElement = document.querySelector('.rating');
 
@@ -248,7 +454,7 @@
             reviewCount++;
             const weirdPhrases = [
                 '🚀 QUANTUM REALM EXPANSION!', 
-                '🌈  ENERGY INCREASING!', 
+                '🌈 ENERGY INCREASING!', 
                 '💥 REALITY BREAKING!', 
                 '🤯 MIND BLOWN!'
             ];
@@ -256,7 +462,21 @@
             reviewElement.textContent = `${(reviewCount / 1000).toFixed(3)} (${reviewCount} reviews) ${randomPhrase}`;
         }
 
-        setInterval(updateReviews, 1000);
+        // Site switching functions
+        function enterQuantumRealm() {
+            document.querySelector('.professional-site').style.display = 'none';
+            document.querySelector('.fun-site').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // Start animations when entering quantum realm
+            animateMatrix();
+            setInterval(updateReviews, 1000);
+        }
+
+        function exitQuantumRealm() {
+            document.querySelector('.professional-site').style.display = 'block';
+            document.querySelector('.fun-site').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
